@@ -1,0 +1,1320 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>砥綿ゴルフコーチング — 福岡・博多</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Noto+Serif+JP:wght@300;400&family=Noto+Sans+JP:wght@300;400&display=swap" rel="stylesheet">
+<style>
+/* ── Reset & Base ─────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg:      #FFFFFF;
+  --bg-alt:  #F5F5F5;
+  --text:    #1A1A1A;
+  --muted:   #666666;
+  --gold:    #B8964F;
+  --border:  #E0E0E0;
+  --btn-bg:  #1A1A1A;
+}
+
+html { scroll-behavior: smooth; overflow-x: hidden; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Noto Sans JP', sans-serif;
+  font-weight: 300;
+  line-height: 1.8;
+  font-size: 15px;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+  word-break: keep-all;
+  overflow-wrap: break-word;
+  padding-top: 64px;
+}
+
+img { display: block; max-width: 100%; }
+a { color: inherit; text-decoration: none; }
+
+h1, h2, h3 {
+  font-family: 'Noto Serif JP', serif;
+  font-weight: 300;
+  line-height: 1.5;
+  letter-spacing: 0.05em;
+}
+
+/* ── Fade-in ───────────────────────────────────── */
+.fade-up {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.fade-up.visible { opacity: 1; transform: translateY(0); }
+.fade-up.delay-1 { transition-delay: 0.1s; }
+.fade-up.delay-2 { transition-delay: 0.2s; }
+.fade-up.delay-3 { transition-delay: 0.3s; }
+.fade-up.delay-4 { transition-delay: 0.4s; }
+
+/* ── Layout ────────────────────────────────────── */
+.container {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 0 clamp(1.5rem, 5vw, 4rem);
+}
+
+section {
+  padding: clamp(4rem, 8vw, 7rem) 0;
+  border-bottom: 1px solid var(--border);
+  overflow-x: hidden;
+  background: var(--bg);
+}
+/* 偶数セクションにグレー背景 */
+section:nth-of-type(even) { background: var(--bg-alt); }
+#hero { background: transparent; border-bottom: none; padding: 0; }
+
+/* ── Section Title ─────────────────────────────── */
+.sec-title { text-align: center; margin-bottom: 3rem; }
+.sec-title h2 {
+  font-family: 'Noto Serif JP', serif;
+  font-weight: 400;
+  font-size: clamp(1.3rem, 3vw, 1.9rem);
+  color: var(--text);
+  letter-spacing: 0.12em;
+  margin-bottom: 0.5rem;
+}
+.sec-en {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 11px;
+  letter-spacing: 0.45em;
+  color: var(--gold);
+  text-transform: uppercase;
+  display: block;
+}
+
+/* ── Buttons ───────────────────────────────────── */
+.btn-dark {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  background: var(--btn-bg);
+  color: #FFFFFF;
+  font-family: 'Noto Sans JP', sans-serif;
+  font-weight: 300;
+  font-size: 14px;
+  letter-spacing: 0.1em;
+  padding: 1rem 2.8rem;
+  transition: opacity 0.25s, transform 0.25s;
+  border: none;
+  cursor: pointer;
+}
+.btn-dark:hover { opacity: 0.72; transform: translateY(-1px); }
+
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  border: 1px solid var(--btn-bg);
+  color: var(--btn-bg);
+  font-size: 14px;
+  letter-spacing: 0.08em;
+  padding: 0.9rem 2.2rem;
+  transition: background 0.25s, color 0.25s;
+}
+.btn-outline:hover { background: var(--btn-bg); color: #FFFFFF; }
+
+
+/* ══════════════════════════════════════════════════
+   NAV
+══════════════════════════════════════════════════ */
+#nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 1000;
+  background: #FFFFFF;
+  box-shadow: 0 1px 12px rgba(0,0,0,0.08);
+  height: 64px;
+}
+.nav-inner {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 0 clamp(1.2rem, 4vw, 3rem);
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.nav-logo {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 14px;
+  font-weight: 300;
+  color: var(--gold);
+  letter-spacing: 0.12em;
+  white-space: nowrap;
+}
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 2.2rem;
+}
+.nav-links a {
+  font-size: 13px;
+  color: var(--text);
+  letter-spacing: 0.06em;
+  transition: color 0.2s;
+  white-space: nowrap;
+}
+.nav-links a:hover { color: var(--gold); }
+.nav-links .nav-cta {
+  background: var(--btn-bg);
+  color: #FFFFFF;
+  padding: 0.55rem 1.3rem;
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  transition: opacity 0.2s;
+}
+.nav-links .nav-cta:hover { opacity: 0.75; color: #FFFFFF; }
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  cursor: pointer;
+  padding: 6px;
+  background: none;
+  border: none;
+}
+.hamburger span {
+  display: block;
+  width: 22px;
+  height: 1.5px;
+  background: var(--text);
+  transition: all 0.3s;
+}
+.hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity: 0; }
+.hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+.nav-mobile {
+  display: none;
+  position: absolute;
+  top: 64px; left: 0; right: 0;
+  background: #FFFFFF;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+  padding: 0.5rem clamp(1.2rem, 4vw, 3rem);
+  flex-direction: column;
+}
+.nav-mobile.open { display: flex; }
+.nav-mobile a {
+  font-size: 14px;
+  color: var(--text);
+  padding: 0.95rem 0;
+  border-bottom: 1px solid var(--border);
+  letter-spacing: 0.05em;
+}
+.nav-mobile a:last-child { border-bottom: none; }
+
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+  .hamburger { display: flex; }
+}
+
+
+/* ══════════════════════════════════════════════════
+   1. HERO (Slideshow)
+══════════════════════════════════════════════════ */
+#hero {
+  position: relative;
+  height: calc(100vh - 64px);
+  min-height: 500px;
+  overflow: hidden;
+}
+.slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 1.2s ease;
+}
+.slide.active { opacity: 1; }
+.slide-bg {
+  width: 100%; height: 100%;
+  background: #2C2C2C;
+  display: flex; align-items: center; justify-content: center;
+  color: #555; font-size: 12px; letter-spacing: 0.2em;
+}
+.slide:nth-child(2) .slide-bg { background: #242424; }
+.slide:nth-child(3) .slide-bg { background: #323232; }
+.slide-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.42);
+}
+.hero-content {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #FFFFFF;
+  z-index: 2;
+  padding: 0 clamp(1.5rem, 6vw, 5rem);
+}
+.hero-main {
+  font-family: 'Noto Serif JP', serif;
+  font-size: clamp(1.5rem, 4vw, 3rem);
+  font-weight: 300;
+  line-height: 1.7;
+  letter-spacing: 0.1em;
+  margin-bottom: 1.4rem;
+}
+.hero-sub-text {
+  font-size: clamp(12px, 2vw, 14px);
+  letter-spacing: 0.18em;
+  color: rgba(255,255,255,0.75);
+}
+.slide-dots {
+  position: absolute;
+  bottom: 1.8rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+  z-index: 3;
+}
+.dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.35);
+  cursor: pointer;
+  transition: background 0.35s;
+  border: none; padding: 0;
+}
+.dot.active { background: var(--gold); }
+
+
+/* ── Trial Banner ──────────────────────────────── */
+.trial-banner {
+  background: var(--gold);
+  text-align: center;
+  padding: 1.1rem 2rem;
+}
+.trial-banner p {
+  font-family: 'Noto Serif JP', serif;
+  font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+  color: #FFFFFF;
+  letter-spacing: 0.12em;
+  font-weight: 300;
+}
+.trial-banner strong { font-weight: 400; font-size: 1.15em; }
+
+
+/* ══════════════════════════════════════════════════
+   2. 共感
+══════════════════════════════════════════════════ */
+.pain-list { list-style: none; margin-top: 1rem; }
+.pain-item {
+  display: grid;
+  grid-template-columns: 52px 1fr;
+  gap: 1.5rem;
+  padding: 2.2rem 0;
+  border-bottom: 1px solid var(--border);
+  align-items: start;
+}
+.pain-item:first-child { border-top: 1px solid var(--border); }
+.pain-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2rem;
+  font-weight: 300;
+  color: var(--gold);
+  line-height: 1;
+  padding-top: 4px;
+}
+.pain-title {
+  font-family: 'Noto Serif JP', serif;
+  font-weight: 300;
+  font-size: 1.02rem;
+  margin-bottom: 0.4rem;
+  color: var(--text);
+}
+.pain-body { color: var(--muted); font-size: 14px; line-height: 1.9; }
+
+
+/* ══════════════════════════════════════════════════
+   3. 哲学
+══════════════════════════════════════════════════ */
+.philosophy-quote-wrap {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 2.5rem clamp(1.5rem, 4vw, 3rem);
+  border-left: 3px solid var(--gold);
+}
+.philosophy-quote {
+  font-family: 'Noto Serif JP', serif;
+  font-weight: 300;
+  font-size: clamp(1.1rem, 2.8vw, 1.65rem);
+  line-height: 1.85;
+  color: var(--text);
+  margin-bottom: 1.8rem;
+}
+.philosophy-sub { color: var(--muted); font-size: 14px; line-height: 2; }
+
+
+/* ══════════════════════════════════════════════════
+   4. なぜ違うのか
+══════════════════════════════════════════════════ */
+.why-lead { color: var(--muted); margin-bottom: 2.5rem; font-size: 15px; }
+.why-lead strong { color: var(--text); font-weight: 400; }
+.why-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.2rem;
+}
+.why-card {
+  background: #FFFFFF;
+  border: 1px solid var(--border);
+  padding: clamp(1.4rem, 3vw, 2.2rem);
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+.why-card:hover { border-color: var(--gold); box-shadow: 0 4px 16px rgba(184,150,79,0.1); }
+.why-card-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  color: var(--gold);
+  margin-bottom: 0.9rem;
+  display: block;
+}
+.why-card h3 {
+  font-family: 'Noto Serif JP', serif;
+  font-weight: 300;
+  font-size: 1rem;
+  margin-bottom: 0.7rem;
+  color: var(--text);
+}
+.why-card p { color: var(--muted); font-size: 13px; line-height: 1.9; }
+.why-card.full-width {
+  grid-column: 1 / -1;
+  border-color: var(--gold);
+  background: #FDFAF5;
+  padding: clamp(2rem, 4vw, 3rem);
+}
+.why-card.full-width h3 { font-size: clamp(1rem, 2.5vw, 1.25rem); }
+.why-card.full-width p { font-size: 14px; max-width: 700px; }
+
+@media (max-width: 600px) {
+  .why-grid { grid-template-columns: 1fr; }
+  .why-card.full-width { grid-column: 1; }
+}
+
+
+/* ══════════════════════════════════════════════════
+   5. 料金（テーブル）
+══════════════════════════════════════════════════ */
+.price-table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+.price-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 480px;
+}
+.price-table thead tr { background: var(--btn-bg); }
+.price-table thead th {
+  padding: 1.2rem 2rem;
+  font-family: 'Noto Serif JP', serif;
+  font-weight: 300;
+  font-size: 1rem;
+  letter-spacing: 0.12em;
+  color: #FFFFFF;
+  text-align: left;
+}
+.price-table tbody tr {
+  border-bottom: 1px solid var(--border);
+  transition: background 0.2s;
+}
+.price-table tbody tr:hover { background: #F9F6F0; }
+.price-table td {
+  padding: 1.3rem 2rem;
+  font-size: 14px;
+  color: var(--text);
+  vertical-align: middle;
+}
+.price-table td:last-child { text-align: right; white-space: nowrap; }
+.price-featured-row { background: #FDFAF5; }
+.price-amt {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.6rem;
+  font-weight: 300;
+  color: var(--gold);
+  line-height: 1;
+}
+.price-tax {
+  font-family: 'Noto Sans JP', sans-serif;
+  font-size: 11px;
+  color: var(--muted);
+  margin-left: 4px;
+}
+.price-sub { font-size: 11px; color: var(--muted); display: block; margin-top: 3px; }
+.price-note { margin-top: 1.2rem; font-size: 12px; color: var(--muted); text-align: right; }
+
+
+/* ══════════════════════════════════════════════════
+   6. オンライン
+══════════════════════════════════════════════════ */
+.online-features {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin: 2.5rem 0 3rem;
+}
+.online-feature {
+  background: #FFFFFF;
+  border: 1px solid var(--border);
+  padding: 2rem 1.5rem;
+  text-align: center;
+}
+.online-feature .icon { font-size: 2rem; margin-bottom: 1rem; display: block; }
+.online-feature h4 {
+  font-family: 'Noto Serif JP', serif;
+  font-weight: 300;
+  font-size: 0.95rem;
+  margin-bottom: 0.6rem;
+  color: var(--gold);
+}
+.online-feature p { font-size: 13px; color: var(--muted); line-height: 1.8; }
+.online-lead { color: var(--muted); font-size: 15px; line-height: 2; max-width: 640px; }
+@media (max-width: 640px) { .online-features { grid-template-columns: 1fr; } }
+
+
+/* ══════════════════════════════════════════════════
+   7. レッスン内容
+══════════════════════════════════════════════════ */
+.lesson-list { display: flex; flex-direction: column; gap: 1.2rem; }
+.lesson-item {
+  display: grid;
+  grid-template-columns: 70px 1fr;
+  gap: 2rem;
+  background: #FFFFFF;
+  border: 1px solid var(--border);
+  padding: clamp(1.4rem, 3vw, 2.2rem);
+  transition: border-color 0.3s;
+}
+.lesson-item:hover { border-color: var(--gold); }
+.lesson-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2.2rem, 4vw, 3.2rem);
+  font-weight: 300;
+  color: var(--gold);
+  line-height: 1;
+  padding-top: 4px;
+  opacity: 0.65;
+}
+.lesson-item h3 { font-size: 1rem; font-weight: 300; margin-bottom: 0.5rem; color: var(--text); }
+.lesson-body { color: var(--muted); font-size: 13px; line-height: 1.9; margin-bottom: 0.9rem; }
+.lesson-tag {
+  display: inline-block;
+  border: 1px solid var(--gold);
+  color: var(--gold);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  padding: 3px 10px;
+}
+@media (max-width: 520px) {
+  .lesson-item { grid-template-columns: 46px 1fr; gap: 1rem; }
+  .lesson-num { font-size: 2rem; }
+}
+
+
+/* ══════════════════════════════════════════════════
+   8. プロフィール
+══════════════════════════════════════════════════ */
+.profile-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(2.5rem, 6vw, 5rem);
+  align-items: start;
+}
+.profile-text h2 { margin-bottom: 0.3rem; }
+.profile-en {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 13px;
+  color: var(--gold);
+  letter-spacing: 0.2em;
+  margin-bottom: 1.8rem;
+  display: block;
+}
+.profile-bio { color: var(--muted); font-size: 14px; line-height: 2.1; margin-bottom: 2rem; }
+.profile-career { list-style: none; border-top: 1px solid var(--border); padding-top: 1.2rem; }
+.profile-career li {
+  font-size: 13px;
+  color: var(--muted);
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+.profile-career li::before {
+  content: '';
+  display: inline-block;
+  width: 4px; height: 4px;
+  background: var(--gold);
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.stat-box {
+  background: #FFFFFF;
+  border: 1px solid var(--border);
+  padding: 1.8rem 1.2rem;
+  text-align: center;
+}
+.stat-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2rem, 4vw, 2.8rem);
+  font-weight: 300;
+  color: var(--gold);
+  display: block;
+  line-height: 1;
+  margin-bottom: 0.5rem;
+}
+.stat-label { font-size: 11px; color: var(--muted); letter-spacing: 0.08em; }
+@media (max-width: 768px) { .profile-grid { grid-template-columns: 1fr; } }
+
+
+/* ══════════════════════════════════════════════════
+   9. スケジュール
+══════════════════════════════════════════════════ */
+.schedule-table-wrap { overflow-x: auto; margin-bottom: 3rem; }
+.schedule-table { width: 100%; border-collapse: collapse; min-width: 320px; }
+.schedule-table th {
+  font-family: 'Noto Serif JP', serif;
+  font-weight: 300;
+  font-size: 13px;
+  color: var(--muted);
+  letter-spacing: 0.1em;
+  padding: 0.9rem;
+  border-bottom: 1px solid var(--border);
+  text-align: center;
+}
+.schedule-table td {
+  text-align: center;
+  padding: 1rem;
+  font-size: 1.1rem;
+  border-bottom: 1px solid var(--border);
+}
+.dot-open { color: var(--gold); }
+.dot-close { color: #CCCCCC; }
+.schedule-note { font-size: 11px; color: var(--muted); margin-top: 0.7rem; }
+.calendar-wrap {
+  margin-top: 2rem;
+  border: 1px solid var(--border);
+  overflow: hidden;
+}
+.calendar-wrap iframe { display: block; width: 100%; height: 600px; }
+.calendar-note { font-size: 12px; color: var(--muted); margin-bottom: 0.8rem; }
+.sec-sub {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 0.95rem;
+  font-weight: 300;
+  color: var(--muted);
+  letter-spacing: 0.06em;
+  margin-bottom: 1rem;
+}
+
+
+/* ══════════════════════════════════════════════════
+   10. アクセス
+══════════════════════════════════════════════════ */
+.access-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+.access-card {
+  background: #FFFFFF;
+  border: 1px solid var(--border);
+  padding: 2.2rem;
+}
+.access-card h3 {
+  font-size: 0.85rem;
+  font-weight: 300;
+  color: var(--gold);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  margin-bottom: 1.3rem;
+}
+.access-name { font-family: 'Noto Serif JP', serif; font-weight: 300; font-size: 1.05rem; margin-bottom: 0.4rem; color: var(--text); }
+.access-area { color: var(--gold); font-size: 13px; margin-bottom: 0.9rem; }
+.access-note { color: var(--muted); font-size: 13px; line-height: 1.9; }
+@media (max-width: 600px) { .access-cards { grid-template-columns: 1fr; } }
+
+
+/* ══════════════════════════════════════════════════
+   11. お客様の未来
+══════════════════════════════════════════════════ */
+.future-list { list-style: none; margin-top: 1rem; }
+.future-item {
+  display: grid;
+  grid-template-columns: 24px 1fr;
+  gap: 1.5rem;
+  padding: 1.8rem 0;
+  border-bottom: 1px solid var(--border);
+  align-items: start;
+}
+.future-item:first-child { border-top: 1px solid var(--border); }
+.future-dot {
+  width: 8px; height: 8px;
+  background: var(--gold);
+  border-radius: 50%;
+  margin-top: 10px;
+  flex-shrink: 0;
+}
+.future-title {
+  font-family: 'Noto Serif JP', serif;
+  font-weight: 300;
+  font-size: 1rem;
+  margin-bottom: 0.4rem;
+  color: var(--text);
+}
+.future-body { color: var(--muted); font-size: 13px; line-height: 1.9; }
+
+
+/* ══════════════════════════════════════════════════
+   12. FAQ
+══════════════════════════════════════════════════ */
+.faq-list { margin-top: 1rem; }
+.faq-item { border-bottom: 1px solid var(--border); overflow: hidden; }
+.faq-item:first-child { border-top: 1px solid var(--border); }
+.faq-q {
+  width: 100%;
+  background: none;
+  border: none;
+  color: var(--text);
+  font-family: 'Noto Sans JP', sans-serif;
+  font-weight: 300;
+  font-size: 14px;
+  text-align: left;
+  padding: 1.4rem 0;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  line-height: 1.6;
+}
+.faq-q:hover { color: var(--gold); }
+.faq-icon { flex-shrink: 0; width: 20px; height: 20px; position: relative; }
+.faq-icon::before,
+.faq-icon::after {
+  content: '';
+  position: absolute;
+  background: var(--gold);
+  border-radius: 2px;
+}
+.faq-icon::before { width: 100%; height: 1px; top: 50%; left: 0; transform: translateY(-50%); }
+.faq-icon::after  { width: 1px; height: 100%; left: 50%; top: 0; transform: translateX(-50%); transition: opacity 0.3s; }
+.faq-item.open .faq-icon::after { opacity: 0; }
+.faq-a { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; }
+.faq-a-inner { color: var(--muted); font-size: 13px; line-height: 2; padding: 0 0 1.6rem; }
+.faq-item.open .faq-a { max-height: 320px; }
+
+
+/* ══════════════════════════════════════════════════
+   13. クロージング
+══════════════════════════════════════════════════ */
+#closing { text-align: center; padding: clamp(5rem, 10vw, 8rem) 0; }
+#closing h2 { font-size: clamp(1.3rem, 3.5vw, 2rem); margin-bottom: 2rem; }
+.closing-quote {
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 2.2;
+  max-width: 520px;
+  margin: 0 auto 3rem;
+}
+.closing-note { margin-top: 1.2rem; font-size: 12px; color: var(--muted); }
+
+
+/* ── Footer ────────────────────────────────────── */
+footer {
+  background: var(--btn-bg);
+  color: rgba(255,255,255,0.45);
+  padding: 2.5rem 0;
+  text-align: center;
+  border-top: none;
+}
+.footer-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 14px;
+  letter-spacing: 0.2em;
+  color: var(--gold);
+  margin-bottom: 0.5rem;
+}
+.footer-copy { font-size: 11px; letter-spacing: 0.1em; }
+
+
+/* ── Utility ───────────────────────────────────── */
+.text-gold { color: var(--gold); }
+.text-muted { color: var(--muted); }
+.mt-1 { margin-top: 1rem; }
+.mt-2 { margin-top: 2rem; }
+.mt-3 { margin-top: 3rem; }
+
+
+/* ══════════════════════════════════════════════════
+   Mobile (≤ 480px)
+══════════════════════════════════════════════════ */
+@media (max-width: 480px) {
+  body { font-size: 14px; padding-top: 56px; }
+  #nav { height: 56px; }
+  .nav-mobile { top: 56px; }
+  #hero { height: calc(100vh - 56px); }
+
+  .container { padding: 0 20px; }
+  section { padding: 3rem 0; }
+
+  .sec-title h2 { font-size: clamp(1.15rem, 5vw, 1.5rem); }
+
+  .pain-item { grid-template-columns: 40px 1fr; gap: 1rem; padding: 1.5rem 0; }
+  .pain-num { font-size: 1.5rem; }
+
+  .why-grid { grid-template-columns: 1fr; }
+  .why-card.full-width { grid-column: 1; }
+
+  .online-features { grid-template-columns: 1fr; gap: 1rem; margin: 2rem 0 2.5rem; }
+  .btn-outline { display: flex; width: 100%; justify-content: center; padding: 1rem 1.5rem; }
+
+  .lesson-item { grid-template-columns: 44px 1fr; gap: 1rem; padding: 1.2rem; }
+  .lesson-num { font-size: 1.8rem; }
+
+  .profile-grid { grid-template-columns: 1fr; }
+  .access-cards { grid-template-columns: 1fr; }
+  .access-card { padding: 1.6rem 1.2rem; }
+
+  #closing { padding: 3.5rem 0; }
+  .btn-dark { display: flex; width: 100%; justify-content: center; padding: 1.1rem 1.5rem; }
+
+  .faq-q { font-size: 13px; padding: 1.2rem 0; }
+
+  .calendar-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .calendar-wrap iframe { min-width: 600px; max-width: none; }
+
+  .trial-banner p { letter-spacing: 0.04em; }
+}
+
+@media (max-width: 375px) {
+  .why-grid,
+  .online-features,
+  .profile-grid,
+  .access-cards,
+  .stats-grid { grid-template-columns: 1fr !important; }
+  .why-card.full-width { grid-column: 1 !important; }
+}
+</style>
+</head>
+<body>
+
+
+<!-- NAV -->
+<nav id="nav">
+  <div class="nav-inner">
+    <a class="nav-logo" href="#">砥綿ゴルフコーチング</a>
+    <div class="nav-links">
+      <a href="#price">料金</a>
+      <a href="#closing">予約</a>
+      <a href="#access">アクセス</a>
+      <a href="https://line.me/YOUR_LINE_ID" target="_blank" class="nav-cta">LINE相談</a>
+    </div>
+    <button class="hamburger" id="hamburger" aria-label="メニューを開く">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="nav-mobile" id="nav-mobile">
+    <a href="#price">料金</a>
+    <a href="#closing">予約</a>
+    <a href="#access">アクセス</a>
+    <a href="https://line.me/YOUR_LINE_ID" target="_blank">LINE相談</a>
+  </div>
+</nav>
+
+
+<!-- 1. HERO -->
+<section id="hero">
+  <div class="slide active">
+    <img src="IMG_8377.jpg" style="width:100%;height:100%;object-fit:cover;display:block;">
+    <div class="slide-overlay"></div>
+  </div>
+  <div class="slide">
+    <img src="IMG_8378.jpg" style="width:100%;height:100%;object-fit:cover;display:block;">
+    <div class="slide-overlay"></div>
+  </div>
+  <div class="slide">
+    <img src="IMG_8379.jpg" style="width:100%;height:100%;object-fit:cover;display:block;">
+    <div class="slide-overlay"></div>
+  </div>
+  <div class="hero-content">
+    <p class="hero-main fade-up">あなたのゴルフに、型はありません。</p>
+    <p class="hero-sub-text fade-up delay-1">福岡・博多区 ／ マンツーマンゴルフコーチング</p>
+  </div>
+  <div class="slide-dots">
+    <button class="dot active" data-idx="0"></button>
+    <button class="dot" data-idx="1"></button>
+    <button class="dot" data-idx="2"></button>
+  </div>
+</section>
+
+
+<!-- 体験レッスンバナー -->
+<div class="trial-banner">
+  <p>まずはお試しください ／ <strong>体験レッスン ¥3,300</strong>（税込・40分）</p>
+</div>
+
+
+<!-- 2. 共感 -->
+<section id="pain">
+  <div class="container">
+    <div class="sec-title fade-up">
+      <h2>こんなお悩み、ありませんか。</h2>
+      <span class="sec-en">YOUR CONCERNS</span>
+    </div>
+    <ul class="pain-list">
+      <li class="pain-item fade-up delay-1">
+        <span class="pain-num">01</span>
+        <div>
+          <p class="pain-title">何年やっても、スコアが変わらない。</p>
+          <p class="pain-body">YouTubeで試して、レッスンに通って、道具を換えて。それでも何かが、足りない気がする。</p>
+        </div>
+      </li>
+      <li class="pain-item fade-up delay-2">
+        <span class="pain-num">02</span>
+        <div>
+          <p class="pain-title">「型通り」に教わるのが、しんどかった。</p>
+          <p class="pain-body">教わったとおりに動こうとすると、身体がついてこない。なのに「感覚がおかしい」と言われる。</p>
+        </div>
+      </li>
+      <li class="pain-item fade-up delay-3">
+        <span class="pain-num">03</span>
+        <div>
+          <p class="pain-title">初心者だから、恥ずかしくて聞けない。</p>
+          <p class="pain-body">こんな基本的なことを聞いて大丈夫だろうか、と思うとレッスンに行くのをためらってしまう。</p>
+        </div>
+      </li>
+      <li class="pain-item fade-up delay-4">
+        <span class="pain-num">04</span>
+        <div>
+          <p class="pain-title">誰かに、ちゃんと「見てほしい」だけ。</p>
+          <p class="pain-body">理論でも技術でもなく、自分のことを理解したうえで教えてくれる人に、出会えていない。</p>
+        </div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+
+<!-- 3. 哲学 -->
+<section id="philosophy">
+  <div class="container">
+    <div class="philosophy-quote-wrap fade-up">
+      <p class="philosophy-quote">人によって、骨格が違う。筋力が違う。感覚が違う。だから教え方も、ひとりずつ違う。</p>
+      <p class="philosophy-sub">ゴルフに「正解の型」はあっても、「あなたの型」はまだ、あなたの中にしかない。それを一緒に探すのが、私の仕事です。</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- 4. なぜ違うのか -->
+<section id="why">
+  <div class="container">
+    <div class="sec-title fade-up">
+      <h2>砥綿コーチが、「ただのレッスンプロ」ではない理由。</h2>
+      <span class="sec-en">WHY TOWATA COACH</span>
+    </div>
+    <p class="why-lead fade-up"><strong>多くのコーチは、スイングを直します。</strong>砥綿コーチは、あなたを見ます。</p>
+    <div class="why-grid">
+      <div class="why-card fade-up delay-1">
+        <span class="why-card-num">① スイングを見る</span>
+        <h3>軌道、タイミング、体重移動。</h3>
+        <p>でも「教科書通りに直す」のではなく、その人の動きの癖と可能性を読みながら、自然に機能するフォームを一緒に見つけます。</p>
+      </div>
+      <div class="why-card fade-up delay-2">
+        <span class="why-card-num">② クラブを見る</span>
+        <h3>クラフトマン歴5年。</h3>
+        <p>シャフト、重さ、ライ角、バランス。道具の合う・合わないが、スイングに大きく影響することを、身体で知っています。</p>
+      </div>
+      <div class="why-card fade-up delay-3">
+        <span class="why-card-num">③ 身体を見る</span>
+        <h3>格闘技20年の身体感覚。</h3>
+        <p>関節の可動域、重心の使い方、力の伝え方。スポーツの本質から、ゴルフの動きを解きほぐします。</p>
+      </div>
+      <div class="why-card full-width fade-up delay-4">
+        <span class="why-card-num">④ そして、あなた自身を見る</span>
+        <h3>性格、感覚、理解のスピード、ゴルフへの向き合い方。</h3>
+        <p>皐月グループのゴルフ場に10年以上携わり、練習場の支配人として数えきれない人のゴルフを見てきた経験が、ここに宿っています。それが「型にはめない」指導の源泉です。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- 5. 料金 -->
+<section id="price">
+  <div class="container">
+    <div class="sec-title fade-up">
+      <h2>料 金</h2>
+      <span class="sec-en">PLAN</span>
+    </div>
+    <div class="price-table-wrap fade-up">
+      <table class="price-table">
+        <thead>
+          <tr><th colspan="2">マンツーマンレッスン</th></tr>
+        </thead>
+        <tbody>
+          <tr class="price-featured-row">
+            <td>体験レッスン（40分）<span class="price-sub">はじめての方はこちらから</span></td>
+            <td><span class="price-amt">¥3,300</span><span class="price-tax">（税込）</span></td>
+          </tr>
+          <tr>
+            <td>通常レッスン（60分）</td>
+            <td><span class="price-amt">¥7,700</span><span class="price-tax">（税込）</span></td>
+          </tr>
+          <tr>
+            <td>チケット3回（60分×3）<span class="price-sub">※ 1回あたり ¥5,500</span></td>
+            <td><span class="price-amt">¥16,500</span><span class="price-tax">（税込）</span></td>
+          </tr>
+          <tr>
+            <td>オンライン動画添削（月2回）<span class="price-sub">動画を送るだけ・全国対応</span></td>
+            <!-- ← 料金を差し替えてください -->
+            <td><span class="price-amt">¥〇〇〇〇</span><span class="price-tax">（税込）</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="price-note fade-up">料金はすべて税込です。</p>
+  </div>
+</section>
+
+
+<!-- 6. オンライン -->
+<section id="online">
+  <div class="container">
+    <div class="sec-title fade-up">
+      <h2>場所を選ばず、本物の指導を。</h2>
+      <span class="sec-en">ONLINE LESSON</span>
+    </div>
+    <p class="online-lead fade-up">福岡に来られなくても大丈夫です。スマホで撮影したスイング動画をLINEで送るだけで、砥綿コーチが丁寧に添削してお返しします。全国どこからでも受けられます。</p>
+    <div class="online-features">
+      <div class="online-feature fade-up delay-1">
+        <span class="icon">📱</span>
+        <h4>送るだけ</h4>
+        <p>スマホで撮影してLINEで送信。それだけでOKです。</p>
+      </div>
+      <div class="online-feature fade-up delay-2">
+        <span class="icon">🎯</span>
+        <h4>本格添削</h4>
+        <p>スイング・身体の使い方・クラブの振り方まで、丁寧にフィードバック。</p>
+      </div>
+      <div class="online-feature fade-up delay-3">
+        <span class="icon">🗾</span>
+        <h4>全国対応</h4>
+        <p>福岡以外の方も受講できます。出張や転勤中の方にも。</p>
+      </div>
+    </div>
+    <!-- ← LINEのURLに差し替えてください -->
+    <a href="https://line.me/YOUR_LINE_ID" target="_blank" class="btn-outline fade-up">オンラインレッスンを詳しく聞く</a>
+  </div>
+</section>
+
+
+<!-- 7. レッスン内容 -->
+<section id="lesson">
+  <div class="container">
+    <div class="sec-title fade-up">
+      <h2>はじめての方も、もっと上手くなりたい方も。</h2>
+      <span class="sec-en">LESSON STYLE</span>
+    </div>
+    <div class="lesson-list">
+      <div class="lesson-item fade-up delay-1">
+        <span class="lesson-num">01</span>
+        <div>
+          <h3>初心者・ゴルフを始めたい方</h3>
+          <p class="lesson-body">「どこから始めたらいいか分からない」という方のための最初の一歩。道具の持ち方から身体の使い方の感覚まで。恥ずかしいことは何もありません。分かるまで、何度でも。</p>
+          <span class="lesson-tag">安心して、始められます</span>
+        </div>
+      </div>
+      <div class="lesson-item fade-up delay-2">
+        <span class="lesson-num">02</span>
+        <div>
+          <h3>スコアが伸び悩んでいる方</h3>
+          <p class="lesson-body">「100が切れない」「何年やっても変わらない」。そこには必ず理由があります。スイングだけでなく、クラブの適合、身体の使い方、考え方の癖まで一緒に見ていきます。</p>
+          <span class="lesson-tag">壁を、一緒に越えましょう</span>
+        </div>
+      </div>
+      <div class="lesson-item fade-up delay-3">
+        <span class="lesson-num">03</span>
+        <div>
+          <h3>他のレッスンで合わなかった方</h3>
+          <p class="lesson-body">型に押し込まれて、身体が違和感を訴えていた。そういう経験をされた方ほど、砥綿コーチの指導が響くかもしれません。</p>
+          <span class="lesson-tag">やり直せます、丁寧に</span>
+        </div>
+      </div>
+      <div class="lesson-item fade-up delay-4">
+        <span class="lesson-num">04</span>
+        <div>
+          <h3>本気で上達したい方</h3>
+          <p class="lesson-body">クラブ選定から身体の使い方、スイング改造まで。ゴルフの全体像を見ながら、本質的な上達を目指します。</p>
+          <span class="lesson-tag">本質から、変わっていく</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- 8. プロフィール -->
+<section id="profile">
+  <div class="container">
+    <div class="sec-title fade-up">
+      <h2>プロフィール</h2>
+      <span class="sec-en">PROFILE</span>
+    </div>
+    <div class="profile-grid">
+      <div class="profile-text fade-up">
+        <h2>砥綿 コーチ</h2>
+        <span class="profile-en">Golf Coach / Fukuoka</span>
+        <p class="profile-bio">ゴルフ場でボールを拾う仕事から始め、フロント、支配人、クラフトマン、そしてコーチへ。ゴルフに関わるあらゆる「現場」を経験してきた、異色の経歴の持ち主です。格闘技20年で培った身体感覚と、クラブ製作・調整の技術知識、そして一人ひとりと向き合い続けた3,000回を超える指導経験が、砥綿コーチのすべてです。</p>
+        <ul class="profile-career">
+          <li>皐月グループ ゴルフ場勤務 10年以上</li>
+          <li>練習場支配人として運営・指導を統括</li>
+          <li>クラブクラフトマン歴 5年</li>
+          <li>格闘技歴 20年</li>
+          <li>ハンデ4 / ドラコンプロ資格保有経験あり</li>
+          <li>YouTube出演多数</li>
+        </ul>
+      </div>
+      <div class="fade-up delay-2">
+        <div class="stats-grid">
+          <div class="stat-box">
+            <span class="stat-num">3,000<span style="font-size:1.2rem">+</span></span>
+            <span class="stat-label">指導実績</span>
+          </div>
+          <div class="stat-box">
+            <span class="stat-num">10<span style="font-size:1.2rem">+</span></span>
+            <span class="stat-label">ゴルフ場勤務（年）</span>
+          </div>
+          <div class="stat-box">
+            <span class="stat-num">20<span style="font-size:1.2rem">+</span></span>
+            <span class="stat-label">格闘技経験（年）</span>
+          </div>
+          <div class="stat-box">
+            <span class="stat-num">5</span>
+            <span class="stat-label">クラフトマン歴（年）</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+<!-- 10. アクセス -->
+<section id="access">
+  <div class="container">
+    <div class="sec-title fade-up">
+      <h2>レッスン場所</h2>
+      <span class="sec-en">ACCESS</span>
+    </div>
+    <div class="access-cards">
+      <div class="access-card fade-up delay-1">
+        <h3>対面レッスン</h3>
+        <!-- ← レッスン拠点の正式名称に差し替えてください -->
+        <p class="access-name">（拠点名 後ほど追加）</p>
+        <p class="access-area">福岡市博多区</p>
+        <p class="access-note">詳しい場所はLINEでご予約後にお知らせします。</p>
+      </div>
+      <div class="access-card fade-up delay-2">
+        <h3>オンライン</h3>
+        <p class="access-name">全国対応</p>
+        <p class="access-area">動画添削コース</p>
+        <p class="access-note">オンライン（動画添削）は全国対応。お気軽にご相談ください。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- 11. お客様の未来 -->
+<section id="future">
+  <div class="container">
+    <div class="sec-title fade-up">
+      <h2>レッスンの先に、こんな自分がいます。</h2>
+      <span class="sec-en">YOUR FUTURE</span>
+    </div>
+    <ul class="future-list">
+      <li class="future-item fade-up delay-1">
+        <span class="future-dot"></span>
+        <div>
+          <p class="future-title">ゴルフが、怖くなくなる。</p>
+          <p class="future-body">「打てるかな」「迷惑かけないかな」という不安が消えていき、コースに立つことが楽しみになります。</p>
+        </div>
+      </li>
+      <li class="future-item fade-up delay-2">
+        <span class="future-dot"></span>
+        <div>
+          <p class="future-title">身体が、言うことをきくようになる。</p>
+          <p class="future-body">「頭では分かるのに、身体が動かない」という感覚が、少しずつ解けていきます。</p>
+        </div>
+      </li>
+      <li class="future-item fade-up delay-3">
+        <span class="future-dot"></span>
+        <div>
+          <p class="future-title">道具が、味方になる。</p>
+          <p class="future-body">自分に合ったクラブを知ることで、同じスイングでも結果が変わる体験ができます。</p>
+        </div>
+      </li>
+      <li class="future-item fade-up delay-4">
+        <span class="future-dot"></span>
+        <div>
+          <p class="future-title">ゴルフの話が、できるようになる。</p>
+          <p class="future-body">職場の同僚、友人、家族と。ゴルフを通じた時間が、豊かに変わっていきます。</p>
+        </div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+
+<!-- 12. FAQ -->
+<section id="faq">
+  <div class="container">
+    <div class="sec-title fade-up">
+      <h2>よくあるご質問</h2>
+      <span class="sec-en">FAQ</span>
+    </div>
+    <div class="faq-list fade-up">
+      <div class="faq-item">
+        <button class="faq-q">まったくの初心者ですが、大丈夫ですか？<span class="faq-icon"></span></button>
+        <div class="faq-a"><p class="faq-a-inner">むしろ、初心者の方は大歓迎です。変な癖がついていない分、一番伸びるのは初心者の方です。クラブの握り方から、一緒に始めましょう。</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">道具を持っていないのですが、問題ありませんか？<span class="faq-icon"></span></button>
+        <div class="faq-a"><p class="faq-a-inner">問題ありません。まずは体験してみてください。「自分に何が必要か」が分かってから、道具を揃えるのが一番です。</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">他の教室に通っていたのですが、途中から受けられますか？<span class="faq-icon"></span></button>
+        <div class="faq-a"><p class="faq-a-inner">もちろんです。これまでの経緯も含めて、丁寧に整理するところから始めます。「上書き」ではなく、一緒に「整理」していきましょう。</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">福岡以外に住んでいますが、受けられますか？<span class="faq-icon"></span></button>
+        <div class="faq-a"><p class="faq-a-inner">オンライン動画添削コースなら全国どこからでも受けられます。スマホで撮影したスイング動画を送るだけでOKです。</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">女性や高齢の方でも受けられますか？<span class="faq-icon"></span></button>
+        <div class="faq-a"><p class="faq-a-inner">はい、ご安心ください。年齢や性別に関係なく、その方の身体の状態や目標に合わせた指導をします。</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">オンラインレッスンはどうやって受けますか？<span class="faq-icon"></span></button>
+        <div class="faq-a"><p class="faq-a-inner">LINEでスイング動画を送っていただくだけです。添削動画または音声コメントでお返しします。スマホ1台あればOKです。</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- 13. クロージング -->
+<section id="closing">
+  <div class="container">
+    <div class="sec-title fade-up">
+      <h2>一度、話してみてください。それだけで、いいです。</h2>
+      <span class="sec-en">CONTACT</span>
+    </div>
+    <p class="closing-quote fade-up">申し込みのプレッシャーはありません。「合うかどうか確かめたい」という気持ちで、十分です。あなたのゴルフの話を、聞かせてください。</p>
+    <p class="fade-up" style="font-size:14px;color:var(--muted);margin-bottom:1.5rem;letter-spacing:0.05em;">ご予約・お問い合わせはLINEから</p>
+    <!-- ← LINEのURLに差し替えてください -->
+    <a href="https://line.me/YOUR_LINE_ID" target="_blank" class="btn-dark fade-up">
+      LINEで無料相談・予約する
+    </a>
+    <p class="closing-note fade-up">返信は砥綿コーチ本人から。営業メッセージは送りません。</p>
+  </div>
+</section>
+
+
+<!-- Footer -->
+<footer>
+  <div class="container">
+    <p class="footer-name">Towata Golf Coaching — Fukuoka</p>
+    <p class="footer-copy">© 2025 砥綿ゴルフコーチ</p>
+  </div>
+</footer>
+
+
+<script>
+/* ── ナビ ハンバーガー ─── */
+const hamburger = document.getElementById('hamburger');
+const navMobile = document.getElementById('nav-mobile');
+hamburger.addEventListener('click', () => {
+  hamburger.classList.toggle('open');
+  navMobile.classList.toggle('open');
+});
+navMobile.querySelectorAll('a').forEach(a => {
+  a.addEventListener('click', () => {
+    hamburger.classList.remove('open');
+    navMobile.classList.remove('open');
+  });
+});
+
+/* ── スライドショー ─── */
+const slides = document.querySelectorAll('.slide');
+const dots   = document.querySelectorAll('.dot');
+let current  = 0;
+let timer;
+
+function goTo(idx) {
+  slides[current].classList.remove('active');
+  dots[current].classList.remove('active');
+  current = (idx + slides.length) % slides.length;
+  slides[current].classList.add('active');
+  dots[current].classList.add('active');
+}
+function startTimer() {
+  timer = setInterval(() => goTo(current + 1), 4000);
+}
+dots.forEach(dot => {
+  dot.addEventListener('click', () => {
+    clearInterval(timer);
+    goTo(parseInt(dot.dataset.idx));
+    startTimer();
+  });
+});
+startTimer();
+
+/* ── FAQ ─── */
+document.querySelectorAll('.faq-q').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const item   = btn.closest('.faq-item');
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item.open').forEach(el => el.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+  });
+});
+
+/* ── Fade-in ─── */
+const observer = new IntersectionObserver(
+  entries => entries.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
+  }),
+  { threshold: 0.1 }
+);
+document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
