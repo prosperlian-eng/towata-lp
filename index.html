@@ -792,71 +792,149 @@ footer {
 
 
 /* ══════════════════════════════════════════════════
-   Mobile (≤ 480px)
+   Mobile-first (≤ 768px)
 ══════════════════════════════════════════════════ */
 @media (max-width: 768px) {
-  /* ── Base ── */
-  body { font-size: 14px; padding-top: 56px; }
 
-  /* ── Nav ── */
+  /* ── Base & 横スクロール防止 ──────────── */
+  html, body { overflow-x: hidden; }
+  body { font-size: 14px; padding-top: 56px; word-break: normal; }
+  *, *::before, *::after { max-width: 100%; box-sizing: border-box; }
+
+  /* ── Nav ──────────────────────────────── */
   #nav { height: 56px; }
-  .nav-inner { padding: 0 20px; }
+  .nav-inner { padding: 0 16px; }
   .nav-links { display: none; }
   .hamburger { display: flex; }
   .nav-mobile { top: 56px; }
 
-  /* ── Hero ── */
-  #hero { height: 60vh; min-height: 320px; }
-
-  /* ── Layout ── */
-  .container { padding: 0 20px; }
-  section { padding: 40px 0; }
+  /* ── Layout ───────────────────────────── */
+  .container { padding: 0 16px; }
+  section { padding: 36px 0; }
   #hero { padding: 0; }
-  .trial-banner { padding: 0.9rem 20px; }
-  .trial-banner p { font-size: 0.9rem; letter-spacing: 0.03em; }
 
-  /* ── Typography ── */
-  h1 { font-size: 28px; }
-  h2, .sec-title h2 { font-size: 22px; }
-  h3 { font-size: 18px; }
+  /* ── Hero ──────────────────────────────── */
+  #hero { height: 55vh; min-height: 280px; }
+  .hero-main { font-size: 1.25rem; line-height: 1.7; letter-spacing: 0.06em; }
+  .hero-sub-text { font-size: 11px; letter-spacing: 0.1em; }
 
-  /* ── 共感 ── */
-  .pain-item { grid-template-columns: 40px 1fr; gap: 1rem; padding: 1.5rem 0; }
-  .pain-num { font-size: 1.5rem; }
+  /* ── Trial Banner ──────────────────────── */
+  .trial-banner { padding: 0.75rem 16px; }
+  .trial-banner p { font-size: 12px; letter-spacing: 0.02em; white-space: normal; line-height: 1.7; }
 
-  /* ── なぜ ── */
-  .why-grid { grid-template-columns: 1fr; }
-  .why-card.full-width { grid-column: 1; }
+  /* ── Section Title ─────────────────────── */
+  .sec-title { margin-bottom: 1.5rem; }
+  .sec-title h2 { font-size: 17px !important; line-height: 1.65; letter-spacing: 0.08em; }
 
-  /* ── 料金テーブル ── */
-  .price-table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
-  .price-table { min-width: 480px; }
+  /* ── Typography ────────────────────────── */
+  h1 { font-size: 22px; }
+  h2 { font-size: 17px; }
+  h3 { font-size: 15px; }
 
-  /* ── オンライン ── */
-  .online-features { grid-template-columns: 1fr; gap: 1rem; margin: 2rem 0 2.5rem; }
-  .btn-outline { display: flex; width: 100%; justify-content: center; padding: 1rem 1.5rem; box-sizing: border-box; }
+  /* ── 共感 ──────────────────────────────── */
+  .pain-item { grid-template-columns: 36px 1fr; gap: 0.75rem; padding: 1.2rem 0; }
+  .pain-num { font-size: 1.3rem; }
+  .pain-title { font-size: 0.9rem; }
+  .pain-body { font-size: 13px; }
 
-  /* ── レッスン ── */
-  .lesson-item { grid-template-columns: 44px 1fr; gap: 1rem; padding: 1.2rem; }
-  .lesson-num { font-size: 1.8rem; }
+  /* ── 哲学 ──────────────────────────────── */
+  .philosophy-quote-wrap { padding: 1.5rem 1rem; }
+  .philosophy-quote { font-size: 1rem; line-height: 1.8; }
+  .philosophy-sub { font-size: 13px; }
 
-  /* ── プロフィール ── */
-  .profile-grid { grid-template-columns: 1fr; }
-  .stats-grid { grid-template-columns: 1fr 1fr; }
+  /* ── なぜ違うのか ──────────────────────── */
+  .why-grid { grid-template-columns: 1fr; gap: 0.75rem; }
+  .why-card { padding: 1.2rem; }
+  .why-card h3 { font-size: 0.9rem; }
+  .why-card p { font-size: 13px; }
+  .why-card.full-width { grid-column: 1; padding: 1.2rem; }
+  .why-card.full-width h3 { font-size: 0.9rem; }
 
-  /* ── アクセス ── */
-  .access-cards { grid-template-columns: 1fr; }
-  .access-card { padding: 1.6rem 1.2rem; }
+  /* ── 料金テーブル → フレックス行に変換 ── */
+  .price-table-wrap { overflow-x: visible; }
+  .price-table { min-width: 0; width: 100%; display: block; }
+  .price-table thead { display: none; }
+  .price-table tbody { display: block; }
+  .price-table tr {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--border);
+    padding: 0;
+    background: #FFFFFF;
+  }
+  .price-table tr:first-child { border-top: 1px solid var(--border); }
+  .price-featured-row { background: #FDFAF5 !important; }
+  .price-table td {
+    display: block;
+    padding: 0.9rem 0.5rem 0.9rem 0;
+    font-size: 13px;
+    border: none;
+    white-space: normal;
+  }
+  .price-table td:last-child {
+    padding: 0.9rem 0 0.9rem 0.5rem;
+    text-align: right;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .price-amt { font-size: 1.25rem; }
+  .price-note { text-align: left; font-size: 11px; }
 
-  /* ── FAQ ── */
-  .faq-q { font-size: 13px; padding: 1.2rem 0; }
+  /* ── LINE CTA ──────────────────────────── */
+  .line-cta-wrap { margin-top: 1.5rem; }
+  .btn-line-green { max-width: 100%; font-size: 14px; padding: 14px 1rem; }
 
-  /* ── クロージング ── */
-  .btn-dark { display: flex; width: 100%; justify-content: center; padding: 1.1rem 1.5rem; box-sizing: border-box; }
+  /* ── オンライン ────────────────────────── */
+  .online-features { grid-template-columns: 1fr; gap: 0.75rem; margin: 1.5rem 0 2rem; }
+  .online-feature { padding: 1.4rem 1.2rem; }
+  .btn-outline {
+    display: block;
+    width: 100%;
+    text-align: center;
+    padding: 1rem;
+    box-sizing: border-box;
+  }
 
-  /* ── 画像・iframe ── */
-  img { width: 100%; }
-  iframe { width: 100% !important; }
+  /* ── レッスン ──────────────────────────── */
+  .lesson-item { grid-template-columns: 40px 1fr; gap: 0.75rem; padding: 1.1rem; }
+  .lesson-num { font-size: 1.6rem; }
+  .lesson-body { font-size: 13px; }
+
+  /* ── プロフィール ──────────────────────── */
+  .profile-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+  .profile-bio { font-size: 13px; }
+  .profile-career li { font-size: 12px; }
+  .stats-grid { grid-template-columns: 1fr 1fr; gap: 0.75rem; }
+  .stat-box { padding: 1.2rem 0.8rem; }
+  .stat-num { font-size: clamp(1.8rem, 8vw, 2.4rem); }
+
+  /* ── アクセス ──────────────────────────── */
+  .access-cards { grid-template-columns: 1fr; gap: 0.75rem; }
+  .access-card { padding: 1.4rem 1.2rem; }
+
+  /* ── お客様の未来 ──────────────────────── */
+  .future-item { padding: 1.2rem 0; gap: 1rem; }
+  .future-body { font-size: 13px; }
+
+  /* ── FAQ ───────────────────────────────── */
+  .faq-q { font-size: 13px; padding: 1rem 0; line-height: 1.6; }
+  .faq-a-inner { font-size: 13px; }
+
+  /* ── クロージング ──────────────────────── */
+  #closing { padding: 40px 0; }
+  .closing-quote { font-size: 13px; line-height: 2; }
+  .btn-dark {
+    display: block;
+    width: 100%;
+    text-align: center;
+    padding: 1.1rem 1rem;
+    box-sizing: border-box;
+  }
+
+  /* ── Images & iframes ──────────────────── */
+  img { max-width: 100%; height: auto; width: auto; }
+  iframe { width: 100% !important; max-width: 100%; }
 }
 </style>
 </head>
