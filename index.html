@@ -374,7 +374,7 @@ section:nth-of-type(even) { background: var(--bg-alt); }
 .why-lead strong { color: var(--text); font-weight: 400; }
 .why-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
   gap: 1.2rem;
 }
 .why-card {
@@ -409,10 +409,6 @@ section:nth-of-type(even) { background: var(--bg-alt); }
 .why-card.full-width h3 { font-size: clamp(1rem, 2.5vw, 1.25rem); }
 .why-card.full-width p { font-size: 14px; max-width: 700px; }
 
-@media (max-width: 600px) {
-  .why-grid { grid-template-columns: 1fr; }
-  .why-card.full-width { grid-column: 1; }
-}
 
 
 /* ══════════════════════════════════════════════════
