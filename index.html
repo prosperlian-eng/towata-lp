@@ -515,7 +515,6 @@ section:nth-of-type(even) { background: var(--bg-alt); }
 }
 .online-feature p { font-size: 13px; color: var(--muted); line-height: 1.8; }
 .online-lead { color: var(--muted); font-size: 15px; line-height: 2; max-width: 640px; }
-@media (max-width: 640px) { .online-features { grid-template-columns: 1fr; } }
 
 
 /* ══════════════════════════════════════════════════
@@ -550,10 +549,6 @@ section:nth-of-type(even) { background: var(--bg-alt); }
   font-size: 11px;
   letter-spacing: 0.12em;
   padding: 3px 10px;
-}
-@media (max-width: 520px) {
-  .lesson-item { grid-template-columns: 46px 1fr; gap: 1rem; }
-  .lesson-num { font-size: 2rem; }
 }
 
 
@@ -683,7 +678,6 @@ section:nth-of-type(even) { background: var(--bg-alt); }
 .access-name { font-family: 'Noto Serif JP', serif; font-weight: 300; font-size: 1.05rem; margin-bottom: 0.4rem; color: var(--text); }
 .access-area { color: var(--gold); font-size: 13px; margin-bottom: 0.9rem; }
 .access-note { color: var(--muted); font-size: 13px; line-height: 1.9; }
-@media (max-width: 600px) { .access-cards { grid-template-columns: 1fr; } }
 
 
 /* ══════════════════════════════════════════════════
@@ -816,7 +810,7 @@ footer {
 
   /* ── Layout ── */
   .container { padding: 0 20px; }
-  section { padding: 40px 20px; }
+  section { padding: 40px 0; }
   #hero { padding: 0; }
   .trial-banner { padding: 0.9rem 20px; }
   .trial-banner p { font-size: 0.9rem; letter-spacing: 0.03em; }
@@ -858,7 +852,6 @@ footer {
   .faq-q { font-size: 13px; padding: 1.2rem 0; }
 
   /* ── クロージング ── */
-  #closing { padding: 40px 20px; }
   .btn-dark { display: flex; width: 100%; justify-content: center; padding: 1.1rem 1.5rem; box-sizing: border-box; }
 
   /* ── 画像・iframe ── */
