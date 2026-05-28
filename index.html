@@ -810,7 +810,7 @@ footer {
 
   /* ── Layout ───────────────────────────── */
   .container { padding: 0 16px; }
-  section { padding: 36px 0; }
+  section { padding: 24px 0; }
   #hero { padding: 0; }
 
   /* ── Hero ──────────────────────────────── */
@@ -823,7 +823,7 @@ footer {
   .trial-banner p { font-size: 12px; letter-spacing: 0.02em; white-space: normal; line-height: 1.7; }
 
   /* ── Section Title ─────────────────────── */
-  .sec-title { margin-bottom: 1.5rem; }
+  .sec-title { margin-bottom: 1.2rem; }
   .sec-title h2 { font-size: 17px !important; line-height: 1.65; letter-spacing: 0.08em; }
 
   /* ── Typography ────────────────────────── */
@@ -922,7 +922,7 @@ footer {
   .faq-a-inner { font-size: 13px; }
 
   /* ── クロージング ──────────────────────── */
-  #closing { padding: 40px 0; }
+  #closing { padding: 32px 0; }
   .closing-quote { font-size: 13px; line-height: 2; }
   .btn-dark {
     display: block;
@@ -935,6 +935,82 @@ footer {
   /* ── Images & iframes ──────────────────── */
   img { max-width: 100%; height: auto; width: auto; }
   iframe { width: 100% !important; max-width: 100%; }
+}
+
+/* ── Credential Strip ────────────────────────── */
+.cred-strip {
+  display: flex;
+  background: #111111;
+  overflow-x: hidden;
+}
+.cred-item {
+  flex: 1;
+  text-align: center;
+  padding: 0.85rem 0.4rem;
+  border-right: 1px solid rgba(255,255,255,0.08);
+}
+.cred-item:last-child { border-right: none; }
+.cred-num {
+  display: block;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.45rem;
+  color: #B8964F;
+  line-height: 1;
+  margin-bottom: 0.25rem;
+}
+.cred-num small { font-size: 0.65rem; }
+.cred-label {
+  display: block;
+  font-size: 9.5px;
+  color: rgba(255,255,255,0.5);
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+}
+
+/* ── Hero credential line ────────────────────── */
+.hero-cred {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  color: #B8964F;
+  margin-top: 1rem;
+  opacity: 0.9;
+}
+
+/* ── Fixed bottom CTA (mobile only) ─────────── */
+#fixed-cta { display: none; }
+
+@media (max-width: 768px) {
+  #fixed-cta {
+    display: block;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 900;
+    padding: 10px 5%;
+    padding-bottom: max(10px, env(safe-area-inset-bottom));
+    background: rgba(255,255,255,0.96);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 -2px 12px rgba(0,0,0,0.07);
+  }
+  #fixed-cta-btn {
+    display: block;
+    background: #06C755;
+    color: #FFFFFF;
+    font-family: 'Noto Sans JP', sans-serif;
+    font-weight: 300;
+    font-size: 14px;
+    letter-spacing: 0.08em;
+    text-align: center;
+    padding: 12px 1rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(6,199,85,0.28);
+    transition: opacity 0.2s;
+  }
+  #fixed-cta-btn:active { opacity: 0.8; }
+  body { padding-bottom: 68px; }
 }
 </style>
 </head>
@@ -981,6 +1057,7 @@ footer {
   <div class="hero-content">
     <p class="hero-main fade-up">あなたのゴルフに、型はありません。</p>
     <p class="hero-sub-text fade-up delay-1">福岡・博多区 ／ マンツーマンゴルフコーチング</p>
+    <p class="hero-cred fade-up delay-2">元クラフトマン × 格闘技20年 × 指導3,000人+</p>
   </div>
   <div class="slide-dots">
     <button class="dot active" data-idx="0"></button>
@@ -989,6 +1066,26 @@ footer {
   </div>
 </section>
 
+
+<!-- 実績クレデンシャルバー -->
+<div class="cred-strip">
+  <div class="cred-item">
+    <span class="cred-num">3,000<small>人+</small></span>
+    <span class="cred-label">指導実績</span>
+  </div>
+  <div class="cred-item">
+    <span class="cred-num">10<small>年+</small></span>
+    <span class="cred-label">ゴルフ場勤務</span>
+  </div>
+  <div class="cred-item">
+    <span class="cred-num">5<small>年</small></span>
+    <span class="cred-label">クラフトマン</span>
+  </div>
+  <div class="cred-item">
+    <span class="cred-num">20<small>年</small></span>
+    <span class="cred-label">格闘技歴</span>
+  </div>
+</div>
 
 <!-- 体験レッスンバナー -->
 <div class="trial-banner">
@@ -1116,10 +1213,6 @@ footer {
       </table>
     </div>
     <p class="price-note fade-up">料金はすべて税込です。</p>
-    <div class="line-cta-wrap fade-up">
-      <a href="https://line.me/YOUR_LINE_ID" target="_blank" class="btn-line-green">まずはLINEで無料相談する</a>
-      <p class="line-cta-note">返信は砥綿コーチ本人から。営業メッセージは送りません。</p>
-    </div>
   </div>
 </section>
 
@@ -1149,8 +1242,6 @@ footer {
         <p>福岡以外の方も受講できます。出張や転勤中の方にも。</p>
       </div>
     </div>
-    <!-- ← LINEのURLに差し替えてください -->
-    <a href="https://line.me/YOUR_LINE_ID" target="_blank" class="btn-outline fade-up">オンラインレッスンを詳しく聞く</a>
   </div>
 </section>
 
@@ -1241,10 +1332,6 @@ footer {
           </div>
         </div>
       </div>
-    </div>
-    <div class="line-cta-wrap fade-up">
-      <a href="https://line.me/YOUR_LINE_ID" target="_blank" class="btn-line-green">まずはLINEで無料相談する</a>
-      <p class="line-cta-note">返信は砥綿コーチ本人から。営業メッセージは送りません。</p>
     </div>
   </div>
 </section>
@@ -1439,5 +1526,10 @@ const observer = new IntersectionObserver(
 );
 document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
 </script>
+
+<!-- Fixed bottom CTA (スマホのみ) -->
+<div id="fixed-cta">
+  <a href="https://line.me/YOUR_LINE_ID" target="_blank" id="fixed-cta-btn">砥綿コーチに相談する</a>
+</div>
 </body>
 </html>
