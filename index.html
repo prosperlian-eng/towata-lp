@@ -33,7 +33,7 @@ body {
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
   max-width: 100vw;
-  word-break: keep-all;
+  word-break: normal;
   overflow-wrap: break-word;
   padding-top: 64px;
 }
@@ -883,7 +883,7 @@ footer {
 
   /* ── LINE CTA ──────────────────────────── */
   .line-cta-wrap { margin-top: 1.5rem; }
-  .btn-line-green { max-width: 100%; font-size: 14px; padding: 14px 1rem; }
+  .btn-line-green { max-width: 84%; font-size: 14px; padding: 11px 1rem; margin: 0 auto; }
 
   /* ── オンライン ────────────────────────── */
   .online-features { grid-template-columns: 1fr; gap: 0.75rem; margin: 1.5rem 0 2rem; }
@@ -935,6 +935,40 @@ footer {
   /* ── Images & iframes ──────────────────── */
   img { max-width: 100%; height: auto; width: auto; }
   iframe { width: 100% !important; max-width: 100%; }
+
+  /* ── Fade-up: translateY縮小でセクション間にはみ出さない ── */
+  .fade-up { transform: translateY(8px); }
+  .fade-up.visible { transform: translateY(0); }
+
+  /* ── Fixed bottom CTA ────────────────────── */
+  #fixed-cta {
+    display: block;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 9999;
+    padding: 8px 8%;
+    padding-bottom: max(8px, env(safe-area-inset-bottom));
+    background: rgba(255,255,255,0.97);
+    box-shadow: 0 -1px 10px rgba(0,0,0,0.09);
+  }
+  #fixed-cta-btn {
+    display: block;
+    background: #06C755;
+    color: #FFFFFF;
+    font-family: 'Noto Sans JP', sans-serif;
+    font-weight: 300;
+    font-size: 14px;
+    letter-spacing: 0.07em;
+    text-align: center;
+    padding: 11px 1rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(6,199,85,0.25);
+    transition: opacity 0.2s;
+  }
+  #fixed-cta-btn:active { opacity: 0.78; color: #FFFFFF; }
+  body { padding-bottom: 64px; }
 }
 
 /* ── Credential Strip ────────────────────────── */
@@ -979,39 +1013,6 @@ footer {
 
 /* ── Fixed bottom CTA (mobile only) ─────────── */
 #fixed-cta { display: none; }
-
-@media (max-width: 768px) {
-  #fixed-cta {
-    display: block;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    z-index: 900;
-    padding: 10px 5%;
-    padding-bottom: max(10px, env(safe-area-inset-bottom));
-    background: rgba(255,255,255,0.96);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    box-shadow: 0 -2px 12px rgba(0,0,0,0.07);
-  }
-  #fixed-cta-btn {
-    display: block;
-    background: #06C755;
-    color: #FFFFFF;
-    font-family: 'Noto Sans JP', sans-serif;
-    font-weight: 300;
-    font-size: 14px;
-    letter-spacing: 0.08em;
-    text-align: center;
-    padding: 12px 1rem;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(6,199,85,0.28);
-    transition: opacity 0.2s;
-  }
-  #fixed-cta-btn:active { opacity: 0.8; }
-  body { padding-bottom: 68px; }
-}
 </style>
 </head>
 <body>
@@ -1308,7 +1309,7 @@ footer {
           <li>練習場支配人として運営・指導を統括</li>
           <li>クラブクラフトマン歴 5年</li>
           <li>格闘技歴 20年</li>
-          <li>ハンデ4 / ドラコンプロ資格保有経験あり</li>
+          <li>ドラコンプロ資格保有経験あり</li>
           <li>YouTube出演多数</li>
         </ul>
       </div>
@@ -1506,6 +1507,25 @@ dots.forEach(dot => {
   });
 });
 startTimer();
+
+/* ── Hero タッチスワイプ ─── */
+(function() {
+  const heroEl = document.getElementById('hero');
+  let txStart = 0, tyStart = 0;
+  heroEl.addEventListener('touchstart', function(e) {
+    txStart = e.touches[0].clientX;
+    tyStart = e.touches[0].clientY;
+  }, { passive: true });
+  heroEl.addEventListener('touchend', function(e) {
+    const dx = e.changedTouches[0].clientX - txStart;
+    const dy = e.changedTouches[0].clientY - tyStart;
+    if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy)) {
+      clearInterval(timer);
+      goTo(dx < 0 ? current + 1 : current - 1);
+      startTimer();
+    }
+  }, { passive: true });
+})();
 
 /* ── FAQ ─── */
 document.querySelectorAll('.faq-q').forEach(btn => {
