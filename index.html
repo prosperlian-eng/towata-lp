@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>砥綿ゴルフコーチング — 福岡・博多</title>
+<link rel="preload" as="image" href="IMG_8377.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Noto+Serif+JP:wght@300;400;700&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
@@ -242,19 +243,38 @@ section:nth-of-type(even) { background: var(--bg-alt); }
   transition: opacity 1.2s ease;
 }
 .slide.active { opacity: 1; }
-.slide-bg {
+.slide img {
   width: 100%; height: 100%;
-  background: #2C2C2C;
-  display: flex; align-items: center; justify-content: center;
-  color: #555; font-size: 12px; letter-spacing: 0.2em;
+  object-fit: cover;
+  display: block;
+  transform: scale(1.06);
+  transition: transform 7s ease-out;
 }
-.slide:nth-child(2) .slide-bg { background: #242424; }
-.slide:nth-child(3) .slide-bg { background: #323232; }
+.slide.active img { transform: scale(1); }
 .slide-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(0,0,0,0.42);
+  background: linear-gradient(180deg, rgba(0,0,0,0.30) 0%, rgba(0,0,0,0.36) 55%, rgba(0,0,0,0.55) 100%);
 }
+.hero-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 3;
+  width: 42px; height: 42px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(0,0,0,0.28);
+  color: #FFFFFF;
+  font-size: 22px;
+  line-height: 1;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: background 0.3s;
+}
+.hero-arrow:hover { background: rgba(0,0,0,0.55); }
+.hero-arrow.prev { left: 16px; }
+.hero-arrow.next { right: 16px; }
 .hero-content {
   position: absolute;
   inset: 0;
@@ -824,6 +844,9 @@ footer {
   #hero { height: 55vh; min-height: 280px; }
   .hero-main { font-size: 1.25rem; line-height: 1.7; letter-spacing: 0.06em; }
   .hero-sub-text { font-size: 11px; letter-spacing: 0.1em; }
+  .hero-arrow { width: 32px; height: 32px; font-size: 17px; }
+  .hero-arrow.prev { left: 8px; }
+  .hero-arrow.next { right: 8px; }
 
   /* ── Trial Banner ──────────────────────── */
   .trial-banner { padding: 0.75rem 16px; }
@@ -1050,13 +1073,28 @@ footer {
 <!-- 1. HERO -->
 <section id="hero">
   <div class="slide active">
-    <img src="d24eb24d-97db-425b-b94c-f999cac730db.png" style="width:100%;height:100%;object-fit:cover;display:block;">
+    <img src="IMG_8377.jpg" alt="マンツーマンでスイングを指導するTOWATAコーチ">
+    <div class="slide-overlay"></div>
+  </div>
+  <div class="slide">
+    <img src="IMG_8378.jpg" alt="シミュレーターを使ったゴルフレッスン風景" loading="lazy">
+    <div class="slide-overlay"></div>
+  </div>
+  <div class="slide">
+    <img src="IMG_8379.jpg" alt="クラブの構造から丁寧に教えるレッスン" loading="lazy">
     <div class="slide-overlay"></div>
   </div>
   <div class="hero-content">
     <p class="hero-main fade-up">あなたのゴルフに、型はありません。</p>
     <p class="hero-sub-text fade-up delay-1">福岡・博多区 ／ マンツーマンゴルフコーチング</p>
     <p class="hero-cred fade-up delay-2">元クラフトマン × 格闘技20年 × 指導3,000人+</p>
+  </div>
+  <button class="hero-arrow prev" aria-label="前の写真へ">&#8249;</button>
+  <button class="hero-arrow next" aria-label="次の写真へ">&#8250;</button>
+  <div class="slide-dots">
+    <button class="dot active" data-idx="0" aria-label="写真1"></button>
+    <button class="dot" data-idx="1" aria-label="写真2"></button>
+    <button class="dot" data-idx="2" aria-label="写真3"></button>
   </div>
 </section>
 
@@ -1083,7 +1121,7 @@ footer {
 
 <!-- 体験レッスンバナー -->
 <div class="trial-banner">
-  <p>まずはお試しください ／ <strong>体験レッスン ¥3,300</strong>（税込・40分）</p>
+  <p>キャンペーン実施中 ／ <strong>体験レッスン ¥1,000</strong>（税込・通常¥3,300）</p>
 </div>
 
 
@@ -1524,6 +1562,13 @@ dots.forEach(dot => {
   dot.addEventListener('click', () => {
     clearInterval(timer);
     goTo(parseInt(dot.dataset.idx));
+    startTimer();
+  });
+});
+document.querySelectorAll('.hero-arrow').forEach(btn => {
+  btn.addEventListener('click', () => {
+    clearInterval(timer);
+    goTo(btn.classList.contains('next') ? current + 1 : current - 1);
     startTimer();
   });
 });
