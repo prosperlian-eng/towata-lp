@@ -49,6 +49,9 @@
   ]
 }
 </script>
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="icon" href="favicon-32.png" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="preload" as="image" href="IMG_8377.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -795,9 +798,28 @@ section:nth-of-type(even) { background: var(--bg-alt); }
 ══════════════════════════════════════════════════ */
 .access-cards {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(3, 1fr);
   gap: 1.5rem;
   margin-top: 1rem;
+}
+.access-map {
+  margin-top: 1.5rem;
+}
+.access-map iframe {
+  width: 100%;
+  height: 340px;
+  border: 1px solid var(--border);
+  display: block;
+}
+.access-map-link {
+  display: inline-block;
+  margin-top: 0.8rem;
+  color: var(--gold);
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(184,150,79,0.5);
+  padding-bottom: 2px;
 }
 .access-card {
   background: #FFFFFF;
@@ -1072,6 +1094,7 @@ footer {
   /* ── アクセス ──────────────────────────── */
   .access-cards { grid-template-columns: 1fr; gap: 0.75rem; }
   .access-card { padding: 1.4rem 1.2rem; }
+  .access-map iframe { height: 240px; }
 
   /* ── お客様の未来 ──────────────────────── */
   .future-item { padding: 1.2rem 0; gap: 1rem; }
@@ -1551,17 +1574,26 @@ footer {
     <div class="access-cards">
       <div class="access-card fade-up delay-1">
         <h3>対面レッスン</h3>
-        <!-- ← レッスン拠点の正式名称に差し替えてください -->
-        <p class="access-name">（拠点名 後ほど追加）</p>
-        <p class="access-area">福岡市博多区</p>
-        <p class="access-note">詳しい場所はLINEでご予約後にお知らせします。</p>
+        <p class="access-name">the golf Hakata base 内</p>
+        <p class="access-area">〒812-0894 福岡県福岡市博多区諸岡4丁目3-9</p>
+        <p class="access-note">ご予約はLINEからお気軽にどうぞ。</p>
       </div>
       <div class="access-card fade-up delay-2">
+        <h3>出張レッスン</h3>
+        <p class="access-name">ご希望の練習場へ</p>
+        <p class="access-area">個別相談</p>
+        <p class="access-note">出張レッスンをご希望の方は、LINEで個別にご相談ください。</p>
+      </div>
+      <div class="access-card fade-up delay-3">
         <h3>オンライン</h3>
         <p class="access-name">全国対応</p>
         <p class="access-area">動画添削コース</p>
         <p class="access-note">オンライン（動画添削）は全国対応。お気軽にご相談ください。</p>
       </div>
+    </div>
+    <div class="access-map fade-up">
+      <iframe src="https://www.google.com/maps?q=the%20golf%20Hakata%20base%20%E7%A6%8F%E5%B2%A1%E7%9C%8C%E7%A6%8F%E5%B2%A1%E5%B8%82%E5%8D%9A%E5%A4%9A%E5%8C%BA%E8%AB%B8%E5%B2%A14%E4%B8%81%E7%9B%AE3-9&output=embed" loading="lazy" title="the golf Hakata base の地図" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      <a class="access-map-link" href="https://www.google.com/maps/search/?api=1&query=the%20golf%20Hakata%20base%20%E7%A6%8F%E5%B2%A1%E7%9C%8C%E7%A6%8F%E5%B2%A1%E5%B8%82%E5%8D%9A%E5%A4%9A%E5%8C%BA%E8%AB%B8%E5%B2%A14%E4%B8%81%E7%9B%AE3-9" target="_blank" rel="noopener">Googleマップで開く →</a>
     </div>
   </div>
 </section>
